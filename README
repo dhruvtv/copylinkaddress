@@ -17,3 +17,10 @@ To try the extension,
 3. Enable Developer Mode
 4. Click 'Load Unpacked Extensions' and point to the above directory.
 5. Start using it!
+
+
+Note:
+----
+
+The extension doesn't accurately work with dynamically generated links as of now.
+Please stick to using it with static links (i.e. ones created at page load).
