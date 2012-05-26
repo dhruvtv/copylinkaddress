@@ -6,22 +6,24 @@ $('body').append(linkAddress);
 $(function() {
     $('a').on({
         mouseenter: function() {
-            if(window.getSelection().rangeCount == 0) {
-                //console.log("Nothing is selected. Copyl kicks in.");
+            if(window.getSelection().toString()) {
+                console.log("Something is already selected. Copyl backs out.");
+            } else {
+                console.log("Nothing is selected. Copyl kicks in.");
                 linkAddress.val($(this).prop('href'));
                 linkAddress.select();
-                //console.log(linkAddress.val());
-            } else {
-                console.log("Something is already selected. Copyl backs out.");
+                console.log("linkAddress: " + linkAddress.val());
             }
+            console.log("Current Selection: " + window.getSelection().toString());
         },
         mouseleave: function() {
-            //console.log("Leaving link.");
-            if (linkAddress.val) {
+            console.log("Leaving link.");
+            if (linkAddress.val()) {
                 linkAddress.val(null);
-                //console.log("Cleared Copyl");
+                console.log("Cleared linkAddress");
                 window.getSelection().removeAllRanges();
             }
+            console.log("Current selection: " + window.getSelection().toString());
         }
     });
 });
