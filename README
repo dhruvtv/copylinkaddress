@@ -9,3 +9,11 @@ You need to right-click, find the "Copy Link Address" menu item, and click it.
 
 This extension makes your life easy. Just point to your link and hit your standard keyboard shortcut
 (Ctrl-C, or Cmd-C for Mac) and you're done!
+
+To try the extension,
+
+1. Download the source and extract to a directory
+2. In Chrome, launch chrome://extensions
+3. Enable Developer Mode
+4. Click 'Load Unpacked Extensions' and point to the above directory.
+5. Start using it!
