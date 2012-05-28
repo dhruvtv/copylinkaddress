@@ -1,7 +1,7 @@
-var linkAddress = $('<input id="copylAddress" type="text" />', { css: { 'display': 'none' }});
+var linkAddress = $('<input id="copylAddress" type="text" />');
 $('body').append(linkAddress);
-
-//console.log("Copyl loaded!");
+// 'Hidden' yet selectable
+linkAddress.css({position: 'absolute', left:'-9999em'});
 
 $(function() {
     $('a').on({
