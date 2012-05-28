@@ -1,6 +1,4 @@
-# copylinkaddress
-
-## Use Chrome? Copy link address without right-clicking! Just use your standard keyboard shortcut!
+### Use Chrome? Copy link address without right-clicking! Just use your standard keyboard shortcut!
 
 If you need to copy link addresses more than once, you know how annoying it is.
 You need to right-click, find the "Copy Link Address" menu item, and click it.
@@ -17,7 +15,7 @@ To try the extension,
 5. Start using it!
 
 
-## Note:
+### Note:
 
 The extension doesn't accurately work with dynamically generated links as of now.
 Please stick to using it with static links (i.e. ones created at page load).
