@@ -1,6 +1,7 @@
-// linkAddress holder 'hidden' yet selectable
-var linkAddress = $('<input id="copylAddress" type="text" />', { css: { position: 'absolute', left:'-9999em'}});
+var linkAddress = $('<input id="copylAddress" type="text" />');
 $('body').append(linkAddress);
+// 'Hidden' yet selectable
+linkAddress.css({position: 'absolute', left:'-9999em'});
 
 $(function() {
     $('a').on({
