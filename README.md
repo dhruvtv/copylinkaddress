@@ -6,7 +6,9 @@ You need to right-click, find the "Copy Link Address" menu item, and click it.
 This extension makes your life easy. Just point to your link and hit your standard keyboard shortcut
 (Ctrl-C, or Cmd-C for Mac) and you're done!
 
-To try the extension,
+Download it at the [Chrome Web Store](https://chrome.google.com/webstore/detail/kdejdkdjdoabfihpcjmgjebcpfbhepmh)
+
+To try the latest dev version of the extension,
 
 1. Download the source (hit the 'ZIP' button you see at the top of the page) and extract to a directory
 2. In Chrome, launch chrome://extensions
