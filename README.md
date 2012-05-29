@@ -15,7 +15,16 @@ To try the extension,
 5. Start using it!
 
 
-### Note:
+### Known Issue:
 
-The extension doesn't accurately work with dynamically generated links as of now.
-Please stick to using it with static links (i.e. ones created at page load).
+The extension doesn't accurately work with dynamically generated links in some sites,
+due to a jQuery/Chrome issue.
+
+A prominent example is the Google home page (www.google.com). Here is a workaround:
+1. Perform a Google search.
+2. Once the search results are displayed, navigate to Image search (by clicking 'Images' on top).
+3. Navigate back to regular search, and the extension now works.
+
+(To spot the pages it won't work, look for the warning
+"Resource interpreted as <something> but transferred with MIME type <something else>"
+in the Chrome Javascript console.
