@@ -31,5 +31,6 @@ $(function() {
         }
     });
 
+    // Clear linkAddress when user closes or moves away from the page
     window.onbeforeunload = clearLinkAddress();
 });
