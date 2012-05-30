@@ -3,6 +3,15 @@ $('body').append(linkAddress);
 // 'Hidden' yet selectable
 linkAddress.css({position: 'absolute', left:'-9999em'});
 
+function clearLinkAddress() {
+    if (linkAddress.val()) {
+        linkAddress.val(null);
+        console.log("Cleared linkAddress");
+        window.getSelection().removeAllRanges();
+    }
+    console.log("Current selection: " + window.getSelection().toString());
+}
+
 $(function() {
     $('a').on({
         mouseenter: function() {
@@ -18,12 +27,9 @@ $(function() {
         },
         mouseleave: function() {
             console.log("Leaving link.");
-            if (linkAddress.val()) {
-                linkAddress.val(null);
-                console.log("Cleared linkAddress");
-                window.getSelection().removeAllRanges();
-            }
-            console.log("Current selection: " + window.getSelection().toString());
+            clearLinkAddress();
         }
     });
+
+    window.onbeforeunload = clearLinkAddress();
 });
