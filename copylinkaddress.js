@@ -6,6 +6,7 @@ linkAddress.css({position: 'absolute', left:'-9999em'});
 function clearLinkAddress() {
     if (linkAddress.val()) {
         linkAddress.val(null);
+//        linkAddress.blur();
         console.log("Cleared linkAddress");
         window.getSelection().removeAllRanges();
     }
@@ -21,6 +22,7 @@ $(function() {
                 console.log("Nothing is selected. Copyl kicks in.");
                 linkAddress.val($(this).prop('href'));
                 linkAddress.select();
+                linkAddress.blur();
                 console.log("linkAddress: " + linkAddress.val());
             }
             console.log("Current Selection: " + window.getSelection().toString());
@@ -32,5 +34,8 @@ $(function() {
     });
 
     // Clear linkAddress when user closes or moves away from the page
-    window.onbeforeunload = clearLinkAddress();
+    window.onbeforeunload = function() {
+        console.log("Leaving page.");
+        clearLinkAddress();
+    }
 });
