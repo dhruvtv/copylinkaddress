@@ -1,6 +1,6 @@
 {
     "name": "Copy Link Address",
-    "version": "0.3.5",
+    "version": "0.3.6",
     "description": "Copy link address without right-clicking. Just hover the link and hit Ctrl-C / Cmd-C!",
     "content_scripts": [
         {
