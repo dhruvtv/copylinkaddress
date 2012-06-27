@@ -1,7 +1,7 @@
-var linkAddress = $('<span id="copylAddress" />');
+var linkAddress = $('<span id="copylAddress" style="display: inline-block;" />');
 $('body').append(linkAddress);
 // 'Hidden' yet selectable
-//linkAddress.css({position: 'absolute', left:'-9999em'});
+linkAddress.css({position: 'absolute', left:'-9999em'});
 
 copylLogging = false;
 
