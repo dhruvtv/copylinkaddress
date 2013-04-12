@@ -1,4 +1,5 @@
 {
+    "manifest_version": 2,
     "name": "Copy Link Address",
     "version": "0.3.6",
     "description": "Copy link address without right-clicking. Just hover the link and hit Ctrl-C / Cmd-C!",
@@ -11,5 +12,5 @@
     "icons": {
             "48": "/icons/icon48.png",
             "128": "/icons/icon128.png"
-        }
+    }
 }
