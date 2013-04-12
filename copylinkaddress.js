@@ -23,7 +23,7 @@ linkAddress.css({position: 'absolute', left:'-9999em'});
 
 var previousCaretPosition = -1;
 
-COPYL_DEBUG = true;
+COPYL_DEBUG = false;
 
 function write_to_console(text) {
     if (COPYL_DEBUG)
