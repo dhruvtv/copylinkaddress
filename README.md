@@ -17,17 +17,7 @@ To try the latest dev version of the extension,
 5. Start using it!
 
 
-### Known Issue:
+### Known Issues:
 
-The extension doesn't accurately work with dynamically generated links in some sites,
-due to a jQuery/Chrome issue.
-
-A prominent example is the Google home page (www.google.com). Here is a workaround:
-
-1. Perform a Google search.
-2. Once the search results are displayed, navigate to Image search (by clicking 'Images' on top).
-3. Navigate back to regular search, and the extension now works.
-
-(To spot the pages it won't work, look for the warning
-"Resource interpreted as <something> but transferred with MIME type <something else>"
-in the Chrome Javascript console.)
+1. Hovering over a link will make focused input lose focus (temporarily - focus restored when you move out of link).
+2. When the cursor is still in the URL box, hyperlink is not copied.
