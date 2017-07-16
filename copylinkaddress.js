@@ -19,7 +19,7 @@ When you move away from the link, the caret position is restored.
 var linkAddress = $('<span id="copylAddress" style="display: inline-block;" />');
 $('body').append(linkAddress);
 // This is a DOM element that has to be selectable but not visible to anybody
-linkAddress.css({position: 'absolute', left:'-9999em'});
+linkAddress.css({position: 'absolute', display:'none'});
 
 var previousCaretPosition = -1;
 
