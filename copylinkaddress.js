@@ -118,7 +118,7 @@ $(function () {
             write_to_console("Nothing is selected.")
 
             let targetHref = $(this).prop('href')
-            if (targetHref.startsWith("http")) {
+            if (targetHref.startsWith("http") || targetHref.startsWith("javascript")) {
                 linkAddress.css({position: 'fixed', top: '0em', right: '-9999em'})
             } else {
                 // linkAddress.css({position: 'fixed', top: '0em', right: '0em'})
