@@ -19,7 +19,7 @@ When you move away from the link, the caret position is restored.
 let linkAddress = $('<span id="copylAddress" style="display: inline-block;" />')
 $('body').append(linkAddress)
 // This is a DOM element that has to be selectable but not visible to anybody
-linkAddress.css({position: 'fixed', top: '0em', right: '0em'})
+linkAddress.css({position: 'fixed', top: '0em', right: '-9999em'})
 
 let previousCaretPosition = -1
 
@@ -72,8 +72,45 @@ function clearLinkAddress() {
 }
 
 $(function () {
+
+    iziToast.settings({
+        timeout: 500,
+        // position: 'center',
+        // imageWidth: 50,
+        pauseOnHover: true,
+        // resetOnHover: true,
+        close: false,
+        progressBar: false
+    });
+
     // The code attaches itself to all anchor elements
-    $("html").on("mouseenter", "a", function () {
+    $("html").on("keydown", function (e) {
+        if (e.keyCode === 67 && (e.ctrlKey || e.metaKey)){
+            if (linkAddress.text()) {
+                iziToast.show({
+                    // class: 'test',
+                    color: 'dark',
+                    icon: 'icon-contacts',
+                    title: '⚠️ Copied　',
+                    // message: 'Do you like it?',
+                    position: 'topCenter',
+                    // position: 'topLeft',
+                    transitionIn: 'flipInX',
+                    transitionOut: 'flipOutX',
+                    progressBarColor: 'rgb(0, 255, 184)',
+                    // image: 'img/avatar.jpg',
+                    imageWidth: 5,
+                    layout:2,
+                    timeout: 2000,
+                    progressBar: true,
+                    onClose: function(){
+                        write_to_console("onClose")
+                    },
+                    iconColor: 'rgb(0, 255, 184)'
+                });
+            }
+        }
+    }).on("mouseenter", "a", function () {
         // Everytime the user hovers (enters) a link
         if (window.getSelection().toString()) {
             write_to_console("Something is already selected. Don't do anything.")
@@ -84,7 +121,30 @@ $(function () {
             if (targetHref.startsWith("http")) {
                 linkAddress.css({position: 'fixed', top: '0em', right: '-9999em'})
             } else {
-                linkAddress.css({position: 'fixed', top: '0em', right: '0em'})
+                // linkAddress.css({position: 'fixed', top: '0em', right: '0em'})
+                if (targetHref) {
+                    iziToast.show({
+                        // class: 'test',
+                        color: 'dark',
+                        icon: 'icon-contacts',
+                        title: targetHref.length > 100 ? targetHref.substring(0, 100) : targetHref,
+                        // message: 'Do you like it?',
+                        position: 'topCenter',
+                        // position: 'topLeft',
+                        transitionIn: 'flipInX',
+                        transitionOut: 'flipOutX',
+                        progressBarColor: 'rgb(0, 255, 184)',
+                        // image: 'img/avatar.jpg',
+                        imageWidth: 5,
+                        layout:2,
+                        timeout: 2000,
+                        progressBar: true,
+                        onClose: function(){
+                            write_to_console("onClose")
+                        },
+                        iconColor: 'rgb(0, 255, 184)'
+                    });
+                }
             }
             linkAddress.text(targetHref)
             write_to_console("linkAddress: " + linkAddress.text())
