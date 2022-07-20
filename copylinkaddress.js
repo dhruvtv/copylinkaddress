@@ -101,6 +101,7 @@ $(function () {
         // Everytime the user hovers (enters) a link
         if (!window.getSelection().toString()) {
             let targetHref = $(this).prop('href')
+            $('body').append(linkAddress)
             if (targetHref.startsWith("http") || targetHref.startsWith("javascript")) {
                 linkAddress.css({position: 'fixed', top: '0em', right: '-9999em'})
             } else {
