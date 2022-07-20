@@ -42,7 +42,6 @@ function copyToClipboard () {
             iconColor: 'rgb(0, 255, 184)'
         });
     }
-    clearLinkAddress()
 }
 
 function selectElement(el) {
@@ -84,7 +83,19 @@ $(function () {
     // The code attaches itself to all anchor elements
     $("html").on("keydown", function (e) {
         if (e.keyCode === 67 && (e.ctrlKey || e.metaKey)){
-            copyToClipboard(linkAddress.text())
+            let inputIdx = -1
+            let activeElement = document.activeElement
+            let focusInput = activeElement.tagName === "INPUT"
+            if (focusInput) {
+                inputIdx = activeElement.selectionStart
+            }
+            if (!window.getSelection().toString()) {
+                copyToClipboard()
+            }
+            if (focusInput && inputIdx > -1) {
+                activeElement.selectionStart = inputIdx
+            }
+            activeElement.focus()
         }
     }).on("mouseenter", "a", function () {
         // Everytime the user hovers (enters) a link
