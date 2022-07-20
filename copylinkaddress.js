@@ -23,11 +23,26 @@ linkAddress.css({position: 'fixed', top: '0em', right: '-9999em'})
 
 let previousCaretPosition = -1
 
-COPYL_DEBUG = false
-
-function write_to_console(text) {
-    if (COPYL_DEBUG)
-        console.log(text)
+function copyToClipboard () {
+    selectElement(linkAddress)
+    document.execCommand('Copy', false, null)
+    if (linkAddress.text()) {
+        iziToast.show({
+            color: 'dark',
+            icon: 'icon-contacts',
+            title: '⚠️ Copied　',
+            position: 'topCenter',
+            transitionIn: 'flipInX',
+            transitionOut: 'flipOutX',
+            progressBarColor: 'rgb(0, 255, 184)',
+            imageWidth: 5,
+            layout:2,
+            timeout: 2000,
+            progressBar: true,
+            iconColor: 'rgb(0, 255, 184)'
+        });
+    }
+    clearLinkAddress()
 }
 
 function selectElement(el) {
@@ -35,50 +50,33 @@ function selectElement(el) {
     if (window.getSelection().rangeCount > 0) {
         previousCaretPosition = document.activeElement.selectionStart
     }
-    write_to_console("Previous cursor position: " + previousCaretPosition)
-    var range = document.createRange()
+    let range = document.createRange()
 
-    write_to_console("Selecting element " + el)
-    write_to_console("el[0] is " + el[0])
     range.selectNodeContents(el[0])
-    write_to_console("Range: " + range)
 
-    write_to_console("Window selection range count before: " + window.getSelection().rangeCount)
     if (window.getSelection().rangeCount > 0) {
         window.getSelection().removeAllRanges()
     }
-    write_to_console("Window selection range count now: " + window.getSelection().rangeCount)
 
-    write_to_console("Active Element: " + document.activeElement)
     window.getSelection().addRange(range)
-    write_to_console("Window selection range count after: " + window.getSelection().rangeCount)
 }
 
 function clearLinkAddress() {
+    selectElement(linkAddress)
     if (linkAddress.text()) {
         linkAddress.text("")
         linkAddress.blur()
-        write_to_console("Cleared linkAddress")
-
-        write_to_console("window.getSelection: " + window.getSelection())
         window.getSelection().removeAllRanges()
     }
     if (previousCaretPosition !== -1) {
         document.activeElement.selectionStart = previousCaretPosition
-        write_to_console("Previous cursor position set: " + document.activeElement.selectionStart)
     }
-
-    write_to_console("Current selection: " + window.getSelection().toString())
 }
 
 $(function () {
-
     iziToast.settings({
         timeout: 500,
-        // position: 'center',
-        // imageWidth: 50,
         pauseOnHover: true,
-        // resetOnHover: true,
         close: false,
         progressBar: false
     });
@@ -86,37 +84,11 @@ $(function () {
     // The code attaches itself to all anchor elements
     $("html").on("keydown", function (e) {
         if (e.keyCode === 67 && (e.ctrlKey || e.metaKey)){
-            if (linkAddress.text()) {
-                iziToast.show({
-                    // class: 'test',
-                    color: 'dark',
-                    icon: 'icon-contacts',
-                    title: '⚠️ Copied　',
-                    // message: 'Do you like it?',
-                    position: 'topCenter',
-                    // position: 'topLeft',
-                    transitionIn: 'flipInX',
-                    transitionOut: 'flipOutX',
-                    progressBarColor: 'rgb(0, 255, 184)',
-                    // image: 'img/avatar.jpg',
-                    imageWidth: 5,
-                    layout:2,
-                    timeout: 2000,
-                    progressBar: true,
-                    onClose: function(){
-                        write_to_console("onClose")
-                    },
-                    iconColor: 'rgb(0, 255, 184)'
-                });
-            }
+            copyToClipboard(linkAddress.text())
         }
     }).on("mouseenter", "a", function () {
         // Everytime the user hovers (enters) a link
-        if (window.getSelection().toString()) {
-            write_to_console("Something is already selected. Don't do anything.")
-        } else {
-            write_to_console("Nothing is selected.")
-
+        if (!window.getSelection().toString()) {
             let targetHref = $(this).prop('href')
             if (targetHref.startsWith("http") || targetHref.startsWith("javascript")) {
                 linkAddress.css({position: 'fixed', top: '0em', right: '-9999em'})
@@ -124,37 +96,25 @@ $(function () {
                 // linkAddress.css({position: 'fixed', top: '0em', right: '0em'})
                 if (targetHref) {
                     iziToast.show({
-                        // class: 'test',
                         color: 'dark',
                         icon: 'icon-contacts',
                         title: targetHref.length > 100 ? targetHref.substring(0, 100) : targetHref,
-                        // message: 'Do you like it?',
                         position: 'topCenter',
-                        // position: 'topLeft',
                         transitionIn: 'flipInX',
                         transitionOut: 'flipOutX',
                         progressBarColor: 'rgb(0, 255, 184)',
-                        // image: 'img/avatar.jpg',
                         imageWidth: 5,
                         layout:2,
                         timeout: 2000,
                         progressBar: true,
-                        onClose: function(){
-                            write_to_console("onClose")
-                        },
                         iconColor: 'rgb(0, 255, 184)'
                     });
                 }
             }
             linkAddress.text(targetHref)
-            write_to_console("linkAddress: " + linkAddress.text())
-            selectElement(linkAddress)
         }
-
-        write_to_console("Current Selection: " + window.getSelection().toString())
     }).on("mouseleave", "a", function () {
         // Every time the user leaves a link
-        write_to_console("Leaving link.")
         clearLinkAddress()
     })
 
