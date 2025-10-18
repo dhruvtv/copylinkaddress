@@ -1,10 +1,9 @@
 ### Use Chrome? Copy link address without right-clicking! Just use your standard keyboard shortcut!
 
 If you need to copy link addresses more than once, you know how annoying it is.
-You need to right-click, find the "Copy Link Address" menu item, and click it.
+You need to right-click, find the "Copy Link on Hover" menu item, and click it.
 
-This extension makes your life easy. Just point to your link and hit your standard keyboard shortcut
-(Ctrl-C, or Cmd-C for Mac) and you're done!
+This extension makes your life easy. Just point to your link and hit your standard keyboard shortcut (Ctrl-C, or Cmd-C for Mac) and you're done!
 
 Download it at the [Chrome Web Store](https://chrome.google.com/webstore/detail/kdejdkdjdoabfihpcjmgjebcpfbhepmh)
 
