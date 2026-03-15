@@ -9,11 +9,13 @@ so the user can copy the selected text as usual.
 let hoveredLink = null;
 
 document.addEventListener('mouseenter', (e) => {
+    if (!(e.target instanceof Element)) return;
     const link = e.target.closest('a');
     if (link) hoveredLink = link;
 }, true);
 
 document.addEventListener('mouseleave', (e) => {
+    if (!(e.target instanceof Element)) return;
     const link = e.target.closest('a');
     if (link) hoveredLink = null;
 }, true);
