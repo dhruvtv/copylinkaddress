@@ -15,9 +15,3 @@ To try the latest dev version of the extension,
 3. Enable Developer Mode
 4. Click 'Load Unpacked Extensions' and point to the above directory.
 5. Start using it!
-
-
-### Known Issues:
-
-1. Hovering over a link will make focused input lose focus (temporarily - focus restored when you move out of link).
-2. When the cursor is still in the URL box, hyperlink is not copied.
