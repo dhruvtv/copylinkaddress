@@ -9,6 +9,6 @@ so the user can copy the selected text as usual.
 document.addEventListener('keydown', (e) => {
     if ((e.metaKey || e.ctrlKey) && e.key === 'c' && !window.getSelection().toString()) {
         const link = document.querySelector('a[href]:hover');
-        if (link) navigator.clipboard.writeText(link.href);
+        if (link) navigator.clipboard?.writeText(link.href);
     }
 });
